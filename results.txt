@@ -1,0 +1,35 @@
+
+[0m[0m
+[0m  Organization[0m
+[0m    validate[0m
+    [32m  ✓[0m[90m should be invalid if name is empty[0m
+    [32m  ✓[0m[90m should be invalid if slug is empty[0m
+    [32m  ✓[0m[90m should be invalid if slug contains special char other than "-"[0m
+    [32m  ✓[0m[90m should be valid if slug contains alphanumerical characters and "-"[0m
+    [32m  ✓[0m[90m should be lowercasing slug[0m
+[0m    exists[0m
+    [31m  1) "before each" hook for "should return true if found"[0m
+    [31m  2) "after each" hook for "should return true if found"[0m
+
+[0m  OrganizationService[0m
+[0m    new[0m
+    [32m  ✓[0m[90m should create a new instance[0m
+
+
+[92m [0m[32m 6 passing[0m[90m (23ms)[0m
+[31m  2 failing[0m
+
+[0m  1) Organization exists "before each" hook for "should return true if found":
+[0m[31m     TypeError: Attempted to wrap undefined property find as function[0m[90m
+    at Object.wrapMethod (node_modules/sinon/lib/sinon/util/core.js:113:29)
+    at Object.stub (node_modules/sinon/lib/sinon/stub.js:67:26)
+    at Context.beforeEach (test/model/organization.test.js:57:27)
+  
+[0m
+[0m  2) Organization exists "after each" hook for "should return true if found":
+[0m[31m     TypeError: Cannot read property 'restore' of undefined[0m[90m
+    at Context.afterEach (test/model/organization.test.js:61:18)
+  
+[0m
+
+
