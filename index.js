@@ -24,6 +24,12 @@ app.get('/organizations/:slug', function(req, res, next) {
     .catch(next);
 });
 
+app.get('/organizations', function(req, res, next) {
+  organizationService.findAll()
+    .then((organizations) => res.send(organizations))
+    .catch(next);
+});
+
 app.post('/organizations', function(req, res, next) {
   organizationService.create(req.body)
     .then((organization) => res.send(organization))

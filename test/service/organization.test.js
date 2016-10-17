@@ -61,6 +61,55 @@ describe('OrganizationService', () => {
     });
   });
 
+  describe('findAll', () => {
+    let OrganizationMock;
+
+    beforeEach(() => {
+      OrganizationMock = sinon.mock(Organization);
+    });
+
+    afterEach(() => {
+      OrganizationMock.restore();
+    });
+
+    it('should return an empty list if there is no organization', () => {
+      OrganizationMock.expects('find')
+        .withArgs({})
+        .chain('exec')
+        .resolves(undefined);
+
+      let service = new OrganizationService();
+
+      return expect(service.findAll()).to.become([]);
+    });
+
+    it('should return a list if there is only one organization', () => {
+      let organization = {slug: "slug1"};
+
+      OrganizationMock.expects('find')
+        .withArgs({})
+        .chain('exec')
+        .resolves(organization);
+
+      let service = new OrganizationService();
+
+      return expect(service.findAll()).to.become([organization]);
+    });
+
+    it('should return all organizations', () => {
+      let organizations = [{slug: "slug1"}, {slug: "slug2"}];
+
+      OrganizationMock.expects('find')
+        .withArgs({})
+        .chain('exec')
+        .resolves(organizations);
+
+      let service = new OrganizationService();
+
+      return expect(service.findAll()).to.become(organizations);
+    });
+  });
+
   describe('findBySlug', () => {
     let OrganizationMock;
 
